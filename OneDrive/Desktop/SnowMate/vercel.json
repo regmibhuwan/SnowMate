@@ -4,6 +4,11 @@
       "path": "/api/email-daily",
       "schedule": "0 8 * * *"
     }
-  ]
+  ],
+  "functions": {
+    "app/api/email-daily/route.ts": {
+      "maxDuration": 60
+    }
+  }
 }
 

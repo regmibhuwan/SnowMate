@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function GET(request: NextRequest) {
+  // Health check endpoint
+  const searchParams = request.nextUrl.searchParams;
+  if (searchParams.get('health') === 'check') {
+    return NextResponse.json({
+      status: 'ok',
+      message: 'Email daily route is working',
+      timestamp: new Date().toISOString(),
+    });
+  }
+
   try {
     // Default location (Toronto) - can be made configurable
     const lat = '43.6532';
